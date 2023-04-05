@@ -55,6 +55,7 @@ if dopdf_v > dopdf_current:
 else:
     dopdf_color = 'color: green;'
 
+"""
 # FireFox
 ffox_current = '91.8.0'
 
@@ -69,7 +70,7 @@ if ffox_v > ffox_current:
     ffox_color = 'color: red;'
 else:
     ffox_color = 'color: green;'
-
+"""
 # Putty
 putty_url = "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"
 putty_latest_paragraph = BeautifulSoup(requests.get(putty_url).text, "html.parser").find("h1")
