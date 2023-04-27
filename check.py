@@ -33,16 +33,6 @@ if lav_v > lav_current:
 else:
     lav_color = 'color: green;'
 
-# Microsoft Edge
-edge_url = "https://www.microsoft.com/et-ee/edge/business-pages/download?form=MA13FJ"
-edge_latest_paragraph = BeautifulSoup(requests.get(edge_url).text, "html.parser").find_all(class_='c-paragraph')[1]
-edge_v = edge_latest_paragraph.text.strip().split('(')[-1].strip(')')
-
-if edge_v > edge_current:
-    edge_color = 'color: red;'
-else:
-    edge_color = 'color: green;'
-
 # doPDF
 dopdf_url = "https://www.dopdf.com/"
 dopdf_latest_paragraph = BeautifulSoup(requests.get(dopdf_url).text, "html.parser").find(class_='d-none d-md-block')
@@ -67,10 +57,6 @@ class FirstPage(QWidget):
         self.lav.setText(f'LAV Filters - {lav_v}')
         self.lav.setStyleSheet(lav_color)
 
-        self.edge = QLabel(self)
-        self.edge.setText(f'Microsoft Edge - {edge_v}')
-        self.edge.setStyleSheet(edge_color)
-
         self.dopdf = QLabel(self)
         self.dopdf.setText(f'doPDF - {dopdf_v}')
         self.dopdf.setStyleSheet(dopdf_color)
@@ -92,7 +78,6 @@ class FirstPage(QWidget):
         layout.insertWidget(1, baas)
         layout.addWidget(self.szip)
         layout.addWidget(self.lav)
-        layout.addWidget(self.edge)
         layout.addWidget(self.dopdf)
 
         self.setLayout(layout)
